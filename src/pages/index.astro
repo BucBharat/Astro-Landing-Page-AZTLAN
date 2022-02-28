@@ -5,6 +5,7 @@ import react from 'react';
 import Counter from '../components/Counter.jsx';
 import Button1 from '../components/Button1.jsx';
 import ModalButton from '../components/ModalButton.jsx';
+import CarouselComp from '../components/Carousel.jsx';
 import Tour from '../components/Tour.astro';
 // You can import components from any supported Framework here!
 
@@ -330,71 +331,7 @@ let colorP = false;
               </a>
             </div>
             <div class="flex pt-10 pr-8 md:hidden ">
-              <!-- <button
-                id="myBtn"
-                onclick={() => {
-                  // modalOpen = !modalOpen;
-                  console.log('toggling modalOpen variable');
-                }}
-                client:visible
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  client:visible
-                >
-                  <line
-                    x1="9"
-                    y1="7"
-                    x2="23"
-                    y2="7"
-                    stroke="#ffffff"
-                    stroke-width="2"
-                    stroke-linecap="round"></line>
-                  <line
-                    x1="4"
-                    y1="15"
-                    x2="23"
-                    y2="15"
-                    stroke="#ffffff"
-                    stroke-width="2"
-                    stroke-linecap="round"></line>
-                </svg>
-              </button> -->
               <ModalButton {...modalProps} client:visible />
-              <!-- <div id="myModal" class="h-screen overflow-hidden modal">
-                <div class="h-full bg-black overflow-hidden modal-content">
-                  <div
-                    class="flex text-white items-center justify-between text-2xl font-bold"
-                  >
-                    EngageML (beta)
-                    <span
-                      class="close"
-                      onClick={() => {
-                        modalOpen = false;
-                      }}>&times;</span
-                    >
-                  </div>
-                  <div class="h-screen mt-20 text-center">
-                    <a href="/usecases">
-                      <p
-                        class={'mb-5 text-xl ' +
-                          (modalOpen ? 'text-red-500' : 'text-blue-500')}
-                      >
-                        Use Cases
-                      </p>
-                    </a>
-                  </div>
-                  <div
-                    class="fixed flex flex-col items-center  text-white justify-center w-full mx-auto -ml-5 text-lg tex-center bottom-5"
-                  >
-                    <p>EngageML</p>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
         </nav>
@@ -402,12 +339,6 @@ let colorP = false;
       <!-- @author : Priyav Kaneria
 		Last modified date : 15/02/22
 		This section contains "Automated Intelligence block" -->
-
-      <!-- <Counter {...someProps} client:visible>
-        <p>Counter check</p>
-      </Counter> -->
-
-      <!-- <Button1 client:visible /> -->
 
       <section class="w-full mx-auto -mt-24">
         <div
@@ -1300,6 +1231,21 @@ let colorP = false;
       </div> -->
 
       <!-- <Tour /> -->
+
+      <div class="space-y-2">
+        <p
+          class="flex justify-center w-full text-lg font-semibold text-[#B2DFFF]"
+          style="letter-spacing: 3px"
+        >
+          USE CASES
+        </p>
+        <h1
+          class="flex justify-center text-3xl font-bold text-white md:text-4xl lg:text-5xl lg:scale-90"
+        >
+          We help Predicting...
+        </h1>
+        <CarouselComp client:visible />
+      </div>
 
       <section class="bg-gradient-to-br from-[#00AEC6] to-[#B220FF]">
         <div class="relative">
