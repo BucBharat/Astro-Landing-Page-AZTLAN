@@ -1,0 +1,469 @@
+---
+// Component Imports
+
+import react from 'react';
+import Counter from '../components/Counter.jsx';
+import Button1 from '../components/Button1.jsx';
+import ModalButton from '../components/ModalButton.jsx';
+import UseCasesComponent from '../components/UseCasesComponent.jsx';
+import CarouselComp from '../components/Carousel.jsx';
+import Tour from '../components/Tour.astro';
+// You can import components from any supported Framework here!
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'My Astro Site';
+let objects = [
+  { name: 'Bharat', id: 1, country: 'I am from India' },
+  { name: 'Kanth', id: 2, country: 'I am from Karnataka' },
+];
+
+let cardsObjects = [
+  {
+    tags: ['blog', 'product', 'marketing'],
+    heading: 'Churn Prediction',
+    link: '/blog/churn_prediction',
+    color: 'E79E53',
+    field: 'Finance',
+    description:
+      'Predict when customers are likely to leave and take proactive measures to reduce churn.',
+  },
+  {
+    tags: ['blog', 'sales'],
+    heading: 'Lead Conversion',
+    link: '/blog/lead_conversion',
+    color: 'EA8BE7',
+    description:
+      'Understand which leads are likely to convert for you using power of machine learning.',
+  },
+];
+
+const modalProps = {
+  modalOpen: false,
+};
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <style global>
+      @import '../styles/global.css';
+      @import '../styles/home.css';
+    </style>
+
+    <!-- <style>
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        max-width: min(100%, 68ch);
+      }
+    </style> -->
+  </head>
+  <body class="m-0 p-0">
+    <main>
+      <!-- <header>
+        <div>
+          <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo" />
+          <h1>Welcome to <a href="https://astro.build/">Astro</a></h1>
+        </div>
+        <p class="text-gray-600">Hello this is bharat!!</p>
+      </header> -->
+      <header>
+        <nav class="w-full mx-auto max-w-screen-2xl z-30">
+          <div class="flex flex-row items-center justify-between -mt-10">
+            <a
+              href="/"
+              class="flex px-4 pt-8 text-lg font-bold  xl:px-16"
+              name="Home"
+            >
+              <svg
+                class="-ml-10 w-60"
+                viewBox="0 0 990 456"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  width="990"
+                  height="455"
+                  transform="translate(0 0.5)"
+                  fill="nofill"></rect>
+                <path
+                  d="M418.426 238.083C417.496 239.182 416.397 240.111 415.214 240.872C413.185 242.225 410.227 243.577 406.592 243.577C399.745 243.577 394.843 238.928 393.913 233.434H425.188L425.357 232.25C425.442 231.49 425.611 230.475 425.611 229.207C425.611 217.711 417.243 209.343 405.747 209.343C394.335 209.343 385.037 218.641 385.037 230.475C385.037 242.309 394.335 251.607 406.169 251.607C412.171 251.607 416.313 249.748 419.271 247.803C420.962 246.705 422.399 245.437 423.498 244L418.426 238.083ZM393.913 226.249C395.603 220.754 399.323 216.951 405.747 216.951C411.748 216.951 415.468 220.754 416.736 226.249H393.913ZM434.873 250.762H443.326V228.785C443.326 222.022 447.975 217.373 454.314 217.373C459.809 217.373 463.612 221.093 463.612 227.094V250.762H472.065V227.094C472.065 216.021 465.303 209.343 456.005 209.343C451.694 209.343 448.566 211.034 446.453 212.724C445.185 213.739 444.171 214.837 443.326 216.105V210.188H434.873V250.762ZM482.638 260.06C483.906 261.666 485.343 263.019 487.033 264.286C489.992 266.4 494.218 268.513 499.966 268.513C512.223 268.513 521.098 259.637 521.098 247.381V210.188H512.645V215.683C511.8 214.584 510.701 213.485 509.433 212.555C507.151 210.949 503.939 209.343 499.544 209.343C489.823 209.343 481.37 217.796 481.37 229.63C481.37 241.464 489.823 249.917 499.544 249.917C503.939 249.917 507.151 248.395 509.433 246.789C510.701 245.859 511.8 244.76 512.645 243.577V247.381C512.645 255.496 507.658 260.483 499.966 260.483C496.331 260.483 493.542 259.13 491.598 257.524C490.499 256.679 489.485 255.665 488.555 254.566L482.638 260.06ZM501.234 241.886C494.894 241.886 489.823 236.815 489.823 229.63C489.823 222.445 494.894 217.373 501.234 217.373C507.574 217.373 512.645 222.445 512.645 229.63C512.645 236.815 507.574 241.886 501.234 241.886ZM556.607 250.762H565.06V224.981C565.06 216.105 558.297 209.343 548.154 209.343C542.744 209.343 538.856 211.203 536.151 213.147C534.545 214.246 533.192 215.514 532.094 216.951L537.588 222.445C538.433 221.431 539.363 220.501 540.462 219.74C542.406 218.388 544.857 216.951 548.154 216.951C553.226 216.951 556.607 220.247 556.607 224.558L541.814 227.094C534.629 228.362 529.98 233.011 529.98 239.773C529.98 246.113 535.39 251.607 543.505 251.607C547.9 251.607 551.112 249.917 553.395 248.226C554.663 247.212 555.761 246.113 556.607 244.845V250.762ZM556.607 232.588C556.607 239.351 551.535 244.422 545.195 244.422C540.884 244.422 538.433 241.886 538.433 238.928C538.433 236.308 540.462 234.194 544.773 233.434L556.607 231.32V232.588ZM575.586 260.06C576.854 261.666 578.291 263.019 579.981 264.286C582.94 266.4 587.166 268.513 592.914 268.513C605.171 268.513 614.046 259.637 614.046 247.381V210.188H605.594V215.683C604.748 214.584 603.649 213.485 602.381 212.555C600.099 210.949 596.887 209.343 592.492 209.343C582.771 209.343 574.318 217.796 574.318 229.63C574.318 241.464 582.771 249.917 592.492 249.917C596.887 249.917 600.099 248.395 602.381 246.789C603.649 245.859 604.748 244.76 605.594 243.577V247.381C605.594 255.496 600.606 260.483 592.914 260.483C589.28 260.483 586.49 259.13 584.546 257.524C583.447 256.679 582.433 255.665 581.503 254.566L575.586 260.06ZM594.182 241.886C587.843 241.886 582.771 236.815 582.771 229.63C582.771 222.445 587.843 217.373 594.182 217.373C600.522 217.373 605.594 222.445 605.594 229.63C605.594 236.815 600.522 241.886 594.182 241.886ZM656.74 238.083C655.81 239.182 654.711 240.111 653.528 240.872C651.499 242.225 648.541 243.577 644.906 243.577C638.059 243.577 633.156 238.928 632.227 233.434H663.502L663.671 232.25C663.756 231.49 663.925 230.475 663.925 229.207C663.925 217.711 655.556 209.343 644.061 209.343C632.649 209.343 623.351 218.641 623.351 230.475C623.351 242.309 632.649 251.607 644.483 251.607C650.485 251.607 654.627 249.748 657.585 247.803C659.276 246.705 660.713 245.437 661.811 244L656.74 238.083ZM632.227 226.249C633.917 220.754 637.636 216.951 644.061 216.951C650.062 216.951 653.781 220.754 655.049 226.249H632.227ZM673.186 250.762H681.639V228.362C681.639 221.6 685.866 217.373 691.36 217.373C696.094 217.373 699.813 220.67 699.813 226.671V250.762H708.266V228.362C708.266 221.6 712.492 217.373 717.986 217.373C722.72 217.373 726.439 220.67 726.439 226.671V250.762H734.892V226.671C734.892 216.105 728.13 209.343 720.1 209.343C715.028 209.343 711.562 211.034 709.28 212.724C708.012 213.739 706.913 214.837 706.153 216.105C705.307 214.837 704.293 213.739 703.11 212.724C701.081 211.034 697.869 209.343 693.473 209.343C689.162 209.343 686.288 211.034 684.344 212.724C683.245 213.739 682.316 214.837 681.639 216.105V210.188H673.186V250.762ZM747.159 250.762H755.611V191.592H747.159V250.762Z"
+                  fill="#ffffff"></path>
+                <g filter="url(#filter0_d_568_7285)">
+                  <path
+                    d="M213.656 203.808C213.656 164.438 222.094 156 261.464 156H309.848C349.218 156 357.656 164.438 357.656 203.808V252.192C357.656 291.562 349.218 300 309.848 300H261.464C222.094 300 213.656 291.562 213.656 252.192V203.808Z"
+                    fill="url(#paint0_linear_568_7285)"></path>
+                </g>
+                <g filter="url(#filter1_d_568_7285)">
+                  <path
+                    d="M250.156 200.38H321.156V200.38C321.156 206.131 316.494 210.793 310.743 210.793H250.156V200.38Z"
+                    fill="url(#paint1_linear_568_7285)"></path>
+                </g>
+                <g filter="url(#filter2_d_568_7285)">
+                  <path
+                    d="M250.156 223.38H305.156V223.38C305.156 229.455 300.231 234.38 294.156 234.38H250.156V223.38Z"
+                    fill="url(#paint2_linear_568_7285)"></path>
+                </g>
+                <g filter="url(#filter3_d_568_7285)">
+                  <path
+                    d="M250.156 245.207H321.156V245.207C321.156 250.958 316.494 255.62 310.743 255.62H250.156V245.207Z"
+                    fill="url(#paint3_linear_568_7285)"></path>
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_d_568_7285"
+                    x="203.656"
+                    y="147"
+                    width="164"
+                    height="164"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"
+                    ></feFlood>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="1"></feOffset>
+                    <feGaussianBlur stdDeviation="5"></feGaussianBlur>
+                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"
+                    ></feColorMatrix>
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_568_7285"></feBlend>
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_568_7285"
+                      result="shape"></feBlend>
+                  </filter>
+                  <filter
+                    id="filter1_d_568_7285"
+                    x="240.69"
+                    y="191.86"
+                    width="89.9333"
+                    height="29.3467"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"
+                    ></feFlood>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="0.946667"></feOffset>
+                    <feGaussianBlur stdDeviation="4.73333"></feGaussianBlur>
+                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"
+                    ></feColorMatrix>
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_568_7285"></feBlend>
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_568_7285"
+                      result="shape"></feBlend>
+                  </filter>
+                  <filter
+                    id="filter2_d_568_7285"
+                    x="240.69"
+                    y="214.86"
+                    width="73.9333"
+                    height="29.9333"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"
+                    ></feFlood>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="0.946667"></feOffset>
+                    <feGaussianBlur stdDeviation="4.73333"></feGaussianBlur>
+                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"
+                    ></feColorMatrix>
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_568_7285"></feBlend>
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_568_7285"
+                      result="shape"></feBlend>
+                  </filter>
+                  <filter
+                    id="filter3_d_568_7285"
+                    x="240.69"
+                    y="236.687"
+                    width="89.9333"
+                    height="29.3467"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"
+                    ></feFlood>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="0.946667"></feOffset>
+                    <feGaussianBlur stdDeviation="4.73333"></feGaussianBlur>
+                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"
+                    ></feColorMatrix>
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_568_7285"></feBlend>
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_568_7285"
+                      result="shape"></feBlend>
+                  </filter>
+                  <linearGradient
+                    id="paint0_linear_568_7285"
+                    x1="213.656"
+                    y1="228"
+                    x2="357.656"
+                    y2="228"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#FDFDFD"></stop>
+                    <stop offset="1" stop-color="#E8E8E8"></stop>
+                  </linearGradient>
+                  <linearGradient
+                    id="paint1_linear_568_7285"
+                    x1="250.156"
+                    y1="205.587"
+                    x2="321.156"
+                    y2="205.587"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#989797"></stop>
+                    <stop offset="1" stop-color="#494949"></stop>
+                  </linearGradient>
+                  <linearGradient
+                    id="paint2_linear_568_7285"
+                    x1="250.156"
+                    y1="228.88"
+                    x2="305.156"
+                    y2="228.88"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#989797"></stop>
+                    <stop offset="1" stop-color="#494949"></stop>
+                  </linearGradient>
+                  <linearGradient
+                    id="paint3_linear_568_7285"
+                    x1="250.156"
+                    y1="250.413"
+                    x2="321.156"
+                    y2="250.413"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#989797"></stop>
+                    <stop offset="1" stop-color="#494949"></stop>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </a>
+
+            <div class="flex-row hidden pt-8 pr-16 space-x-6 md:flex ">
+              <a href="/useCases">
+                <p class="text-gray-400  hover:text-blue-500">Use Cases</p>
+              </a>
+            </div>
+            <div class="flex pt-10 pr-8 md:hidden ">
+              <ModalButton {...modalProps} client:visible />
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Intelligence Automated block -->
+
+      <section class="w-full mx-auto -mt-24">
+        <div
+          class="container px-4 pt-32 mx-auto text-center max-w-screen-2xl md:pt-40 lg:pt-48 2xl:pt-56"
+        >
+          <h2
+            class="tracking-tight text-white font-mp extrabold text-3xl font-mt-16 mp lg:mt-0 md:text-5xl lg:text-6xl"
+          >
+            Intelligence <span class="text-[#0076CB]">Automated</span>
+          </h2>
+          <div class="patch1"></div>
+          <p class="max-w-2xl mx-auto mt-6 text-lg text-white  lg:text-xl">
+            Engage your data sets with Machine Learning and have experience of
+            quick and fast predictions, with zero complexity and efforts!
+          </p>
+        </div>
+        <div
+          class="flex justify-center pt-10 pb-10 mt-4 md:pb-32 lg:pb-40 2xl:pb-48 sm:mt-0 sm:ml-3"
+        >
+          <a href="https://airtable.com/shrm6s4KxJ1gq7yfA">
+            <button
+              type="submit"
+              class="block px-3 py-3 text-base font-medium text-black bg-[#F5F5F5] border border-transparent rounded-md shadow hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-6"
+            >
+              Get Early access
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <UseCasesComponent />
+
+      <!-- get started now -->
+
+      <section class="bg-gradient-to-br from-[#00AEC6] to-[#B220FF]">
+        <div class="relative">
+          <div aria-hidden="true" class="hidden sm:block"></div>
+          <div
+            class="max-w-md mx-auto sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8"
+          >
+            <div
+              class="relative px-6 py-10 overflow-hidden rounded-2xl sm:px-12 sm:py-20"
+            >
+              <div class="relative">
+                <div class="sm:text-center">
+                  <h2
+                    class="text-3xl font-extrabold tracking-tight text-center text-white  md:text-5xl "
+                  >
+                    Get Started Now
+                  </h2>
+                  <p class="mx-auto mt-6 text-lg text-center text-white">
+                    Engage ML is a <span class=""
+                      >tool with Zero complexity
+                    </span>that will drive your decision making process and
+                    accelerate success.<br class="hidden xl:block" /> Onboard for
+                    no code seamless experience.
+                  </p>
+                </div>
+                <div class="flex justify-center pt-8 mt-4 sm:mt-0 sm:ml-3">
+                  <a href="https://airtable.com/shrm6s4KxJ1gq7yfA">
+                    <button
+                      type="submit"
+                      class="block px-6 py-3 text-base font-medium text-black bg-white border border-transparent rounded-md shadow  hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-6"
+                    >
+                      Get Early Access
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- footer  -->
+      <section
+        class="flex flex-col w-full text-white px-4 md:px-8 pt-12 pb-12 md:pt-24 lg:pb-32 mx-auto max-w-screen-2xl xl:px-16 xl:flex-row xl:space-x-32 xl:justify-start "
+      >
+        <div class="pb-16 xl:pb-0">
+          <p class="">
+            EngageML <span
+              class="text-gray-400 text-sm font-semibold border-2 border-gray-200 py-0.5 px-2 rounded-sm"
+              >BETA</span
+            >
+          </p>
+          <p class="pt-4 text-white ">
+            Fast forward your decision making with quick and efficient data
+            predictions
+          </p>
+          <div class="flex flex-row pt-6 space-x-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M22 4.00914C22 4.00914 20.1655 5.09278 19.1455 5.40005C18.5979 4.77051 17.8703 4.32432 17.0609 4.1218C16.2516 3.91929 15.3995 3.97023 14.6201 4.26774C13.8406 4.56524 13.1713 5.09496 12.7027 5.78525C12.2341 6.47553 11.9888 7.29308 12 8.12732V9.03641C10.4024 9.07784 8.81934 8.72352 7.39183 8.005C5.96431 7.28649 4.73665 6.22608 3.81818 4.91823C3.81818 4.91823 0.181818 13.1001 8.36364 16.7364C6.49139 18.0073 4.26105 18.6445 2 18.5546C10.1818 23.1 20.1818 18.5546 20.1818 8.10005C20.1818 7.84732 20.1564 7.5946 20.1091 7.3455C21.0364 6.43096 22 4.00914 22 4.00914Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div
+            class="flex flex-col md:flex-row w-full pt-6 space-y-2 md:space-y-0"
+          >
+            <a
+              href="/terms-conditions"
+              class="pr-2 text-gray-200 cursor-pointer hover:text-blue-500"
+              target="_blank">Terms & Conditions</a
+            >
+            <p class="pr-2 text-gray-400 hidden md:block">|</p>
+            <a
+              href="/privacy-policy"
+              class="pr-2 text-gray-200 cursor-pointer hover:text-blue-500"
+              target="_blank">Privacy Policy</a
+            >
+            <p class="pr-2 text-gray-400 hidden md:block">|</p>
+            <a
+              href="/cookie-policy"
+              class="pr-2 text-gray-200 cursor-pointer hover:text-blue-500"
+              target="_blank">Cookie Policy</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

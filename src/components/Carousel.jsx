@@ -66,7 +66,7 @@ export default function CarouselComp({ children }) {
       <Carousel responsive={responsive}>
         {cardsObjects.map((cardData, index) => (
           <div
-            className="flex flex-col justify-between relative h-auto p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl"
+            className="flex flex-col justify-between relative h-[320px] w-[300px] p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl"
             key={index}
           >
             <div className="pb-5">
@@ -87,7 +87,7 @@ export default function CarouselComp({ children }) {
             </div>
           </div>
         ))}
-        <div className="flex flex-col justify-between relative h-auto p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl">
+        <div className="flex flex-col justify-between relative h-[320px] w-[300px] p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl">
           <div className="pb-5">
             <p className=" text-white lg:text-lg">Heading Field</p>
             <p className="font-semibold text-gray-400 lg:text-xl">
@@ -100,6 +100,45 @@ export default function CarouselComp({ children }) {
             </div>
           </div>
         </div>
+        <div className="flex flex-col justify-between relative h-[320px] w-[300px] p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl">
+          <div className="pb-5">
+            <p className=" text-white lg:text-lg">Heading Field</p>
+            <p className="font-semibold text-gray-400 lg:text-xl">
+              Description Field
+            </p>
+          </div>
+          <div className="flex justify-start w-full gap-2">
+            <div className="flex items-center justify-center h-8 p-1 px-2 text-sm text-white bg-[#ffffff4d] rounded-sm capitalize">
+              <span>Tag Field</span>
+            </div>
+          </div>
+        </div>
+        {/* <div className="flex flex-col justify-between relative h-[320px] w-[300px] p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl">
+          <div className="pb-5">
+            <p className=" text-white lg:text-lg">Heading Field</p>
+            <p className="font-semibold text-gray-400 lg:text-xl">
+              Description Field
+            </p>
+          </div>
+          <div className="flex justify-start w-full gap-2">
+            <div className="flex items-center justify-center h-8 p-1 px-2 text-sm text-white bg-[#ffffff4d] rounded-sm capitalize">
+              <span>Tag Field</span>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col justify-between relative h-[320px] w-[300px] p-6 m-5 space-y-2 bg-gradient-to-tr from-[#414153] to-[#0A0A0F] rounded-sm  drop-shadow-2xl">
+          <div className="pb-5">
+            <p className=" text-white lg:text-lg">Heading Field</p>
+            <p className="font-semibold text-gray-400 lg:text-xl">
+              Description Field
+            </p>
+          </div>
+          <div className="flex justify-start w-full gap-2">
+            <div className="flex items-center justify-center h-8 p-1 px-2 text-sm text-white bg-[#ffffff4d] rounded-sm capitalize">
+              <span>Tag Field</span>
+            </div>
+          </div>
+        </div> */}
       </Carousel>
     </>
   );

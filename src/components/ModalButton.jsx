@@ -65,7 +65,7 @@ export default function ModalButton({ children, modalOpen: initialModalOpen }) {
             </span>
           </div>
           <div className="h-screen mt-20 text-center">
-            <a href="/usecases">
+            <a href="/useCases">
               <p className="mb-5 text-xl text-gray-400">Use Cases</p>
             </a>
           </div>
